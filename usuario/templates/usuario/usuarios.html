@@ -1,0 +1,15 @@
+
+
+{% extends 'usuario/layout.html' %}
+{% block content %}
+    {% for u in usu %}
+
+    <ul class="list-group">
+      
+        <li class="list-group-item">{{u.nombre}} {{u.apellido}} </li>
+      
+      </ul>
+              
+    {% endfor %}
+
+{% endblock %}
