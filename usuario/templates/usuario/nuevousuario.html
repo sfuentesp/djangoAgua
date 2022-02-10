@@ -1,0 +1,23 @@
+
+{% extends 'usuario/layout.html' %}
+{% block content %}
+
+
+    <div class="row">
+        <form method="POST">
+            {%csrf_token%}
+            
+              {{form.as_p}}
+          
+            <div class="form-group">
+                <button class="btn btn-outline-info" formmethod="post" type="submit">
+                    Guardar
+        
+                </button>
+            </div>
+          </form>
+
+  </div>
+
+
+{% endblock %}

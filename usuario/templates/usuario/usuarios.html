@@ -2,8 +2,10 @@
 
 {% extends 'usuario/layout.html' %}
 {% block content %}
+<a href="{% url 'nuevo-usu'%}"class="btn btn-primary">Agregar</a>
     {% for u in usu %}
 
+    
     <ul class="list-group">
       
         <li class="list-group-item">{{u.nombre}} {{u.apellido}} </li>
