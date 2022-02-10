@@ -17,6 +17,11 @@ class UsuarioForm(forms.ModelForm):
         model=Usuario
         fields=("rut","nombre","apellido","tipousu")
 
+class LoginForm(forms.Form):
+    nombre=forms.CharField(widget=forms.TextInput)
+    password=forms.CharField(widget=forms.PasswordInput)
+
+
 
 
     
