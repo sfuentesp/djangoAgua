@@ -16,5 +16,4 @@ urlpatterns=[
     path('logout/',views.salir, name="salir-usu"),
    
     
-    
 ]
