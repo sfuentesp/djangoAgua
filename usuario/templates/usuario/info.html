@@ -1,130 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Yo quiero otro mundo - Info</title>
- <!--   <link rel="stylesheet" href="./assets/css/estilos.css" type="text/css">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-</head>
-<body>
-  <header>
-      
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <!-- Image and text -->
-        <nav class="navbar">
-            <a class="navbar-brand" href="./index.html">
-             
-                <h1> <i class="bi bi-droplet-fill"></i>Escasez hidrica</h1>    
-            </a>
-        </nav>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="info.html">Info</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="galeria.html">Galeria</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-          
-           
-           
-          </ul>
-          <ul class="navbar-nav my-2 my-lg-0">
-            <li class="nav-item ">
-              <a class="nav-link mr-sm-2" href="#" id="btnLogin"><i class="bi bi-people-fill bi-lg"></i></a>
-            </li>
-          </ul>
+{% extends 'usuario/layout.html' %}
+{% block content %}
 
-        </div>
-      </nav>
-</header>
-    <main class="container mt-4">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <h4>¿Haz escuchado el dicho empieza por casa?</h5>
-                <h5>Ahorra agua empezando por tu casa, trabajo u/o cualquier lugar en donde tu puedas estar presente, 
-                    aún que se lo mas minimo posible ya estas ayudando con el planeta.
-                </h4>
-            </div>
 
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="form-inline">
-                    <label>Busca tu idea</label>
-                    <input class="form-control" type="search" name="Buscar ideas"> 
-                 
-                    <button type="button" class="btn btn-primary">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-      </svg>
-                      Buscar
-                    </button>
-                
-                </div>
-             
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <ul class="list-group">
-                    <li class="list-group-item">Revisa periodicamente tus llaves, grifos, duchas de agua periodicamente. <span class="badge badge-dark bg-primary">Like 20</span></li>
-                    <li class="list-group-item">Utiliza cronometro para ducharte. <span class="badge badge-dark bg-primary">Like 18</span></li>
-                    <li class="list-group-item">Reutiliza el agua de lavadora para algúnn regadio. <span class="badge badge-dark bg-primary">Like 15</span></li>
-                    <li class="list-group-item">Plantar arboles nativos, consumen menos agua. <span class="badge badge-dark bg-primary">Like 10</span></li>
-  
-                  </ul>
-            </div>
-        </div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+      <h4>¿Haz escuchado el dicho empieza por casa?</h5>
+      <h5>Ahorra agua empezando por tu casa, trabajo u/o cualquier lugar en donde tu puedas estar presente, 
+          aún que se lo mas minimo posible ya estas ayudando con el planeta.
+      </h4>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="form-inline">
+          <label>Busca tu idea</label>
+          <input class="form-control" type="search" name="Buscar ideas"> 
+       
+          <button type="button" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+            Buscar
+          </button>
       
-    </main>
-    <footer class="text-center align-text-bottom">
-     
-        <p>Derechos Reservados &copy; 2021 </p>
-    </footer>
-    <div class="modal fade" id="miModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-info text-white ">
-            <h5 class="modal-title " id="exampleModalLabel">Iniciar Sesión</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="txt_user" class="col-form-label">Usuario</label>
-                <input type="text" class="form-control" id="txt_user">
-              </div>
-              <div class="form-group">
-                <label for="txt_pass" class="col-form-label">Contraseña</label>
-                <input type="password" class="form-control" id="txt_pass" >
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="btnCancelar" class="btn btn-danger" >Cerrar</button>
-            <button type="button" id="btnAceptar" class="btn btn-primary">Aceptar</button>
-          </div>
-        </div>
       </div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <script src="./assets/js/main.js"></script>
-</body>
-</html>
+   
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+      <ul class="list-group">
+          <li class="list-group-item">Revisa periodicamente tus llaves, grifos, duchas de agua periodicamente. <span class="badge badge-dark bg-primary">Like 20</span></li>
+          <li class="list-group-item">Utiliza cronometro para ducharte. <span class="badge badge-dark bg-primary">Like 18</span></li>
+          <li class="list-group-item">Reutiliza el agua de lavadora para algúnn regadio. <span class="badge badge-dark bg-primary">Like 15</span></li>
+          <li class="list-group-item">Plantar arboles nativos, consumen menos agua. <span class="badge badge-dark bg-primary">Like 10</span></li>
+
+        </ul>
+  </div>
+</div>
+{% endblock %}

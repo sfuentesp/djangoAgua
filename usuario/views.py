@@ -13,6 +13,13 @@ def home(request):
 def contacto(request):
     return render(request,'usuario/contacto.html')
 
+def info(request):
+    return render(request,'usuario/info.html')
+
+def galeria(request):
+    return render(request,'usuario/galeria.html')
+
+
 def listarUser(request):
     usu=Usuario.objects.all()
     return render(request,'usuario/usuarios.html',{"usu":usu})
