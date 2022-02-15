@@ -11,6 +11,8 @@ urlpatterns=[
     path('galeria/', views.galeria, name="galeria"),
 
     path('nuevousuario/', views.crearusuario,name="nuevo-usu"),
+    path('nuevousuarioAppusu/', views.nuevoUsuario,name="nuevo-usu-app"),
+
     path('usuarios/', views.listarUser,name="listado-usu"),
     path('bienvenido/', views.bienvenido, name="home-bienvenido"),
     path('logout/',views.salir, name="salir-usu"),

@@ -2,16 +2,35 @@
 
 {% extends 'usuario/layout.html' %}
 {% block content %}
-<a href="{% url 'nuevo-usu'%}"class="btn btn-primary">Agregar</a>
-    {% for u in usu %}
 
-    
-    <ul class="list-group">
+  <div class="form-gropu">
+  
+      <h4>Usuario de app usuario</h4><a href="{% url 'nuevo-usu-app'%}"class="btn btn-primary">Agregar</a>
+      {% for u in usu %}
+          
+        <ul class="list-group">
       
         <li class="list-group-item">{{u.nombre}} {{u.apellido}} </li>
       
       </ul>
-              
-    {% endfor %}
+    
 
+      {% endfor %}
+    
+  </div>
+  <hr>
+  <div class="form-group">
+      <h4>Usuarios de django users</h4><a href="{% url 'nuevo-usu'%}"class="btn btn-primary">Agregar</a>
+      {% for u in usu2 %}
+      <ul class="list-group">
+      
+        <li class="list-group-item">{{u.username}} </li>
+      
+      </ul>
+      {% endfor %}
+    
+    </div>
+   
+              
+  
 {% endblock %}

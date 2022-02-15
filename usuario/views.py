@@ -26,7 +26,8 @@ def galeria(request):
 
 def listarUser(request):
     usu=Usuario.objects.all()
-    return render(request,'usuario/usuarios.html',{"usu":usu})
+    usu2=User.objects.all()
+    return render(request,'usuario/usuarios.html',{"usu":usu,"usu2":usu2})
 
 
 def nuevoUsuario(request):
@@ -40,7 +41,7 @@ def nuevoUsuario(request):
 
     else:
         form=UsuarioForm()
-        return render(request,'usuario/nuevousuario.html',{"form":form})
+        return render(request,'usuario/nuevousuarioAppusuario.html',{"form":form})
 
 
 
