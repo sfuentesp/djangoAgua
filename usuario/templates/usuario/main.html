@@ -9,7 +9,10 @@
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-  
+  <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+  <script src="{% static 'js/jquery.validate.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+
 </head>
 <body>
     <header>
@@ -30,21 +33,21 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="{% url 'home'%}">Home</a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#">Info</a>
-                </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Galeria</a>
+                  <a class="nav-link" href="{% url 'info'%}">Ingreso boleta</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contacto</a>
-                </li> -->
+            
               
            
               </ul>
               <ul class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item">
+                  <labe class="nav-link mr-sm-2">{{ user.username }}</labe>
+                  
+                </li>
                 <li class="nav-item ">
-                  <a class="nav-link mr-sm-2" href="{% url 'salir-usu'%}" id="btnLogin"><i class="bi bi-people-fill bi-sm"></i></a>
+                  
+                  <a class="nav-link mr-sm-2" href="{% url 'salir-usu'%}" id="btnLogin">Cerrar Sesión</a>
                 </li>
               </ul>
 
@@ -60,35 +63,6 @@
      
         <p>Derechos Reservados &copy; 2021 </p>
     </footer>
-
-<div class="modal fade" id="miModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-info text-white ">
-        <h5 class="modal-title " id="exampleModalLabel">Iniciar Sesión</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="txt_user" class="col-form-label">Usuario</label>
-            <input type="text" class="form-control" id="txt_user">
-          </div>
-          <div class="form-group">
-            <label for="txt_pass" class="col-form-label">Contraseña</label>
-            <input type="password" class="form-control" id="txt_pass" >
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="btnCancelar" class="btn btn-danger" >Cerrar</button>
-        <button type="button" id="btnAceptar" class="btn btn-primary">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
       
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

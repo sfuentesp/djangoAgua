@@ -10,9 +10,9 @@ urlpatterns=[
     path('info/', views.info, name="info"),
     path('galeria/', views.galeria, name="galeria"),
 
-    path('nuevousuario/', views.nuevoUsuario,name="nuevo-usu"),
+    path('nuevousuario/', views.crearusuario,name="nuevo-usu"),
     path('usuarios/', views.listarUser,name="listado-usu"),
-    path('bienvenido/', views.bienvenido),
+    path('bienvenido/', views.bienvenido, name="home-bienvenido"),
     path('logout/',views.salir, name="salir-usu"),
    
     

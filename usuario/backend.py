@@ -4,8 +4,8 @@ from .models import Usuario
 class MyBackend(BaseBackend):
     def authenticate(self, request, username=None, password=None):
         try:
-            cliente=Usuario.objects.filter(rut=username, password=password).get()
-            return cliente
+            usu=Usuario.objects.filter(rut=username, password=password).get()
+            return usu
         except:
             return None
 

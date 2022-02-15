@@ -8,6 +8,7 @@ class Usuario(models.Model):
     nombre=models.CharField(max_length=50,null=False)
     apellido=models.CharField(max_length=100,null=False)
     tipousu=models.CharField(max_length=100, null=False)
+    password=models.CharField(max_length=8)
     
 
 

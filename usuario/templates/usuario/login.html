@@ -4,15 +4,29 @@
 
 <div class="row">
 
+    <div class="col-lg-2 ">
 
-    <form method="post">
-        {% csrf_token %}
-        
-        {% load crispy_forms_tags%}
-        {{form|crispy}}
+    </div>
+    <div class="col-lg-8 ">
 
-    <button class="btn btn-success">Login</button>
-    </form>
+            <form method="post">
+                {% csrf_token %}
+                
+                {% load crispy_forms_tags%}
+                <div class="form-group">
+                    {{form|crispy}}
+                </div>
+               
+                
+                <a href="{% url 'nuevo-usu'%}">Registrate</a>
+                <br>
+            <button class="btn btn-success">Login</button>
+            </form>
+    </div>
+    <div class="col-lg-2 ">
+
+    </div>
+
 
 </div>
 {% endblock %}

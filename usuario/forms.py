@@ -14,10 +14,15 @@ class UserRegisterForm(UserCreationForm):
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model=Usuario
-        fields=("rut","nombre","apellido","tipousu")
+        fields=("rut","nombre","apellido","tipousu","password")
 
 class LoginForm(forms.Form):
     nombre=forms.CharField(widget=forms.TextInput)
+    password=forms.CharField(widget=forms.PasswordInput)
+
+class UserForm(forms.Form):
+    nombre=forms.CharField(widget=forms.TextInput)
+    email=forms.CharField(widget=forms.EmailInput)
     password=forms.CharField(widget=forms.PasswordInput)
 
 
