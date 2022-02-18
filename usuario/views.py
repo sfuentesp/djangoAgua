@@ -1,9 +1,10 @@
+
 import email
 from django.shortcuts import redirect, render
 from .models import Usuario
 from .forms import UsuarioForm, LoginForm,UserForm
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -63,24 +64,24 @@ def crearusuario(request):
         return render(request,'usuario/nuevousuario.html',{"form":form})
         
 
-def login(request):
-    if request.method=="POST":
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
+# def login(request):
+#     if request.method=="POST":
+#         form = LoginForm(data=request.POST)
+#         if form.is_valid():
 
-            nombre=form.cleaned_data["nombre"]
-            clave=form.cleaned_data["password"]
-            user=authenticate(request,username=nombre,password=clave)
+#             nombre=form.cleaned_data["nombre"]
+#             clave=form.cleaned_data["password"]
+#             user=authenticate(request,username=nombre,password=clave)
             
-            print(user)
-            if user is not None:
-               auth_login(request,user)
+#             print(user)
+#             if user is not None:
+#                auth_login(request,user)
                 
-        return render(request,'usuario/bienvenido.html',{"user":user})
+#         return render(request,'usuario/bienvenido.html',{"user":user})
       
-    else:
-        form=LoginForm()
-        return render(request,'usuario/login.html',{"form":form})
+#     else:
+#         form=LoginForm()
+#         return render(request,'usuario/login.html',{"form":form})
 
 
 
@@ -89,10 +90,10 @@ def login2(request):
         form = LoginForm(data=request.POST)
         if form.is_valid():
 
-            rut=form.cleaned_data["rut"]
+            rut=form.cleaned_data["nombre"]
             clave=form.cleaned_data["password"]
             user=myBackend.authenticate(request,username=rut,password=clave)
-            
+            login(request, user,backend='usuario.backend.MyBackend')
             print(user)
             if user is not None:
                # auth_login(request,user)
