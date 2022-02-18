@@ -1,5 +1,5 @@
 
-import email
+
 from django.shortcuts import redirect, render
 from .models import Usuario
 from .forms import UsuarioForm, LoginForm,UserForm
