@@ -1,6 +1,8 @@
 
+from dataclasses import fields
+from pyexpat import model
 from django import forms
-from .models import Usuario
+from .models import Usuario,Post
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm
 
@@ -29,6 +31,12 @@ class UserForm(forms.Form):
     nombre=forms.CharField(widget=forms.TextInput)
     email=forms.CharField(widget=forms.EmailInput)
     password=forms.CharField(widget=forms.PasswordInput)
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model=Post
+        fields = ('titulo','descripcion')
 
 
 

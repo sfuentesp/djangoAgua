@@ -1,8 +1,7 @@
-
-
+from datetime import datetime
 from django.shortcuts import redirect, render
-from .models import Usuario
-from .forms import UsuarioForm, LoginForm,UserForm
+from .models import Usuario, Post
+from .forms import PostForm, UsuarioForm, LoginForm,UserForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
@@ -91,3 +90,30 @@ def bienvenido(request):
 def salir(request):
     logout(request)
     return redirect("/bienvenido")
+
+
+@login_required(login_url="/login")
+def nuevoPost(request):
+    if request.method=="POST":
+        form=PostForm(data= request.POST)
+        if form.is_valid():
+            titulos=form.cleaned_data["titulo"]
+            des=form.cleaned_data["descripcion"]
+          
+            usu=request.user
+
+            post=Post.objects.create(titulo=titulos, descripcion=des, autor=usu)
+           
+        return redirect(listarPost)
+        
+    else:
+        form=PostForm()
+        return render(request,'usuario/post.html',{"form":form})
+
+@login_required(login_url="/login")
+def listarPost(request):
+    post=Post.objects.all()
+    
+    return render(request,'usuario/post_list.html',{"posts":post})
+
+

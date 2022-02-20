@@ -17,5 +17,6 @@ urlpatterns=[
     path('bienvenido/', views.bienvenido, name="home-bienvenido"),
     path('logout/',views.salir, name="salir-usu"),
    
-    
+    path('post/',views.nuevoPost, name="post-usu"),
+    path('post/listado',views.listarPost, name="post-list-usu"),
 ]
