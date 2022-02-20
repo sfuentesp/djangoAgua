@@ -22,11 +22,11 @@
         <h5 class="card-title"><a class="article-title" href="#">{{ post.titulo|title }}</a></h5>
         <p class="card-text">{{ post.descripcion }}</p>
         <div class="text-right">
-          <a href="#" class="btn btn-outline-success btn-sm">
+          <a href="editar/{{post.id}}/" class="btn btn-outline-success btn-sm">
            
             <i class="bi bi-file-post-fill"></i> Modificar</a>
           
-          <a href="#" class="btn btn-outline-danger btn-sm">
+          <a href="eliminar/{{post.id}}/" class="btn btn-outline-danger btn-sm">
           
           <i class="bi bi-trash"></i>  Eliminar
         </a>

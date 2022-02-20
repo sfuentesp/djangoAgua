@@ -1,4 +1,5 @@
 
+from unicodedata import name
 from django.urls import path
 from . import views
 
@@ -19,4 +20,6 @@ urlpatterns=[
    
     path('post/',views.nuevoPost, name="post-usu"),
     path('post/listado',views.listarPost, name="post-list-usu"),
+    path('post/editar/<int:id>/', views.editarPost, name='post-editar-usu'),
+    path('post/eliminar/<int:id>/', views.eliminarPost, name='post-eliminar-usu'),
 ]

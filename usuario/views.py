@@ -116,4 +116,19 @@ def listarPost(request):
     
     return render(request,'usuario/post_list.html',{"posts":post})
 
+def eliminarPost(request,id):
+    post=Post.objects.get(pk=id)
+    post.delete()
+    return redirect(listarPost)
 
+def editarPost(request,id):
+    post=Post.objects.get(pk=id)
+    form=PostForm(instance=post)
+
+    if request.method=="POST":
+        form=PostForm(data=request.POST, instance=post)
+        form.save()
+        return redirect(listarPost)
+    else:
+        
+        return render(request,'usuario/editarPost.html',{"form":form})
