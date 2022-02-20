@@ -15,8 +15,7 @@ myBackend=MyBackend()
 def home(request):
     return render(request,'usuario/index.html')
 
-def contacto(request):
-    return render(request,'usuario/contacto.html')
+
 
 def info(request):
     return render(request,'usuario/info.html')
@@ -68,41 +67,22 @@ def login(request):
     if request.method=="POST":
         form = LoginForm(data=request.POST)
         if form.is_valid():
-
-            nombre=form.cleaned_data["nombre"]
-            clave=form.cleaned_data["password"]
-            user=authenticate(request,username=nombre,password=clave)
             
-            print(user)
+            usu=form.cleaned_data["nombre"]
+            clave=form.cleaned_data["password"]
+            user=authenticate(request,username=usu,password=clave)
+           
             if user is not None:
-               auth_login(request,user)
-                
-        return render(request,'usuario/bienvenido.html',{"user":user})
-      
+                auth_login(request,user)
+                #return render(request,'usuario/bienvenida.html',{"user":user})
+                return redirect("/bienvenido")
+            else:
+                return redirect("/login")
+           
     else:
         form=LoginForm()
         return render(request,'usuario/login.html',{"form":form})
 
-
-
-# def login2(request):
-#     if request.method=="POST":
-#         form = LoginForm(data=request.POST)
-#         if form.is_valid():
-
-#             rut=form.cleaned_data["nombre"]
-#             clave=form.cleaned_data["password"]
-#             user=myBackend.authenticate(request,username=rut,password=clave)
-#             login(request, user,backend='usuario.backend.MyBackend')
-#             print(user)
-#             if user is not None:
-#                # auth_login(request,user)
-#                 login(request, user)
-#         return render(request,'usuario/bienvenido.html',{"user":user})
-      
-#     else:
-#         form=LoginForm()
-#         return render(request,'usuario/login.html',{"form":form})
 
 @login_required(login_url="/login")
 def bienvenido(request):

@@ -1,0 +1,51 @@
+
+
+{% extends 'usuario/main.html' %}
+{% block content %}
+
+
+  
+      <h4>Listado de registros de contactos</h4>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>¿Gestionado?</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for c in contactos %}
+             
+          <tr>
+            <td>{{c.fecha}}</td>
+            <td>{{c.nombre}}</td>
+            <td>{{c.telefono}}</td>
+            <td>{{c.email}}</td>
+            <td>
+              {% if c.gestionado %}
+                <div class="text text-success">
+                  Si
+                </div>
+              {% else %}
+              <div class="text text-danger">
+                No
+              </div>
+              {% endif %}
+            </td>
+            <td><a href="editar/{{c.id}}/" class="btn btn-success btn-sm">Gestionar</a> <a href="eliminar/{{c.id}}/" class="btn btn-danger btn-sm">Eliminar</a>
+          </tr>
+        
+       {% endfor %}
+       
+    </tbody>
+  </table>
+
+
+              
+  
+{% endblock %}

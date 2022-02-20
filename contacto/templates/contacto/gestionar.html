@@ -1,0 +1,54 @@
+
+
+{% extends 'usuario/main.html' %}
+{% block content %}
+
+
+  <div class="form-group">
+  
+      <h4>Actualizar registro </h4>
+      <div class="card">
+        <h5 class="card-header">
+   
+     <div class="article-metadata ">
+       
+       <small class="text-muted">Nombre contacto {{ c.nombre|title }}</small>,
+       <small class="text-muted">{{ c.fecha }}</small>
+     </div>
+   </h5>
+   <div class="card-body">
+     
+     <h6 class="article-title">Detalle del mensaje</h5>
+     <p class="card-text">{{ c.mensaje }}</p>
+<hr>
+     <div class="alert alert-warning">
+      <form method="POST">
+        {%csrf_token%}
+        
+        {% load crispy_forms_tags%}
+        {{form|crispy}}
+        <br>
+        <div class="form-group">
+            <button class="btn btn-outline-info" formmethod="post" type="submit">
+                Guardar
+    
+            </button>
+        </div>
+    </form>
+     </div>
+  
+ 
+
+   </div>
+
+ </div>
+
+
+  
+
+
+  </div>
+
+              
+  
+{% endblock %}

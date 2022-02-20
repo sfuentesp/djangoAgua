@@ -31,32 +31,73 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'home'%}">Home</a>
+                  <a class="nav-link" href="{% url 'home-bienvenido'%}">Home</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'info'%}">Ingreso boleta</a>
+                <li class="nav-item active dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" 
+                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Registro de Boleta
+                  </a>
+                  <div class="active dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item " href="#" >Nuevo ingreso</a>
+                  
+                      <a class="dropdown-item " href="#" >Mis boletas</a>
+                      </div>
                 </li>
-            
-              
+                <li class="nav-item active dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" 
+                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Comentarios
+                  </a>
+                  <div class="active dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item " href="#" >Nueva publicación</a>
+                  
+                      <a class="dropdown-item " href="#" >Mis publicación</a>
+                      </div>
+                </li>
+                                    
            
               </ul>
               <ul class="navbar-nav my-2 my-lg-0">
-                <li class="nav-item">
-                  <labe class="nav-link mr-sm-2">{{ user.username|title }}</labe>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="#" 
+                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Administración
+                  </a>
+               
+                  <div class="active dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   
-                </li>
-                <li class="nav-item ">
+                  <a class="dropdown-item  mr-sm-2" href="{% url 'contacto-registros'%}" id="btnLogin">Registros - Contacto</a>
+                  </div>
+              </li>
+
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="#" 
+                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ user.username|title }}
+                  </a>
+               
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   
-                  <a class="nav-link mr-sm-2" href="{% url 'salir-usu'%}" id="btnLogin">Cerrar Sesión</a>
-                </li>
+                  <a class="dropdown-item  mr-sm-2" href="{% url 'salir-usu'%}" id="btnLogin">Cerrar Sesión</a>
+                  </div>
+              </li>
+            
+
               </ul>
 
             </div>
           </nav>
     </header>
-    <main class="container mt-4" id="contenido">
+    <main class="container-fluid mt-4" id="contenido">
+     
+
         {% block content %}
         {% endblock %}
+
+      </div>
     </main>
   
     <footer class="text-center align-text-bottom mt-5">

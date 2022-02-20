@@ -1,0 +1,40 @@
+
+{% extends 'usuario/layout.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-2 ">
+
+    </div>
+    <div class="col-lg-8 ">
+
+        <form method="POST">
+            {%csrf_token%}
+            
+            {% load crispy_forms_tags%}
+            {{form|crispy}}
+            <br>
+      
+            {% if mensaje == 1 %}
+            <div class="alert alert-success">
+                ¡Mensaje enviado correctamente..!
+                <a href="{% url 'contacto' %}" class="btn btn-primary">Volver</a>
+            </div>
+            {% else %}
+            <div class="form-group">
+                <button class="btn btn-outline-info" formmethod="post" type="submit">
+                    Enviar
+        
+                </button>
+            </div>
+            {% endif %}
+          
+        
+        </form>
+  </div>
+  <div class="col-lg-2">
+
+         </div>
+</div>
+
+{% endblock %}
