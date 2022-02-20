@@ -112,7 +112,7 @@ def nuevoPost(request):
 
 @login_required(login_url="/login")
 def listarPost(request):
-    post=Post.objects.all()
+    post=Post.objects.filter(autor=request.user)
     
     return render(request,'usuario/post_list.html',{"posts":post})
 
