@@ -27,6 +27,7 @@ class Post(models.Model):
 
 class Responsabilidad(models.Model):
     nombre=models.CharField(max_length=20, null=False)
+    des=models.TextField(max_length=100)
 
     def __str__(self):
         return self.nombre
