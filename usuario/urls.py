@@ -22,4 +22,7 @@ urlpatterns=[
     path('post/listado',views.listarPost, name="post-list-usu"),
     path('post/editar/<int:id>/', views.editarPost, name='post-editar-usu'),
     path('post/eliminar/<int:id>/', views.eliminarPost, name='post-eliminar-usu'),
+
+    path('voluntario/', views.nuevoVoluntario, name='voluntario-usu'),
+    path('responsabilidad/', views.nuevaResponsabilidad, name='responsabilidad-usu'),
 ]

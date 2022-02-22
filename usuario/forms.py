@@ -2,7 +2,7 @@
 from dataclasses import fields
 from pyexpat import model
 from django import forms
-from .models import Usuario,Post
+from .models import Usuario,Post,Voluntario, Responsabilidad
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm
 
@@ -39,6 +39,13 @@ class PostForm(forms.ModelForm):
         fields = ('titulo','descripcion')
 
 
+class VoluntarioForm(forms.ModelForm):
+    class Meta:
+        model=Voluntario
+        fields=('rut','nombre','telefono','email','responsabilidad')
 
 
-    
+class ResponsabilidadForm(forms.ModelForm):
+    class Meta:
+        model = Responsabilidad
+        fields=('id','nombre')

@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.shortcuts import redirect, render
-from .models import Usuario, Post
-from .forms import PostForm, UsuarioForm, LoginForm,UserForm
+from .models import Usuario, Post, Voluntario, Responsabilidad
+from .forms import PostForm, ResponsabilidadForm, UsuarioForm, LoginForm,UserForm, VoluntarioForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
@@ -132,3 +132,38 @@ def editarPost(request,id):
     else:
         
         return render(request,'usuario/editarPost.html',{"form":form})
+
+
+
+@login_required(login_url="/login")
+def nuevoVoluntario(request):
+    v=Voluntario.objects.all()
+ 
+    if request.method=="POST":
+        form=VoluntarioForm(data= request.POST)
+        if form.is_valid():
+            volu=form.save(commit=False)
+            volu.save() #se guarda en la db
+        return redirect(nuevoVoluntario)
+        
+    else:
+        form=VoluntarioForm()
+        return render(request,'usuario/nuevoVoluntario.html',{"form":form,"v":v})
+
+@login_required(login_url="/login")
+def nuevaResponsabilidad(request):
+    r=Responsabilidad.objects.all()
+ 
+    if request.method=="POST":
+        form=ResponsabilidadForm(data= request.POST)
+        if form.is_valid():
+            res=form.save(commit=False)
+            res.save() #se guarda en la db
+        return redirect(nuevaResponsabilidad)
+        
+    else:
+        form=ResponsabilidadForm()
+        return render(request,'usuario/nuevaResponsabilidad.html',{"form":form,"res":r})
+
+
+

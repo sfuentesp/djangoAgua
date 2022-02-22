@@ -59,6 +59,20 @@
                 </li>
                                     
            
+                <li class="nav-item active dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" 
+                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Voluntarios
+                  </a>
+                  <div class="active dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item " href="{% url 'voluntario-usu' %}" >Nuevo voluntario</a>
+                  
+                      <a class="dropdown-item " href="#" >listado voluntarios</a>
+                      </div>
+                </li>
+                         
+                
               </ul>
               <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item dropdown active">
@@ -69,7 +83,8 @@
                
                   <div class="active dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   
-                  <a class="dropdown-item  mr-sm-2" href="{% url 'contacto-registros'%}" id="btnLogin">Registros - Contacto</a>
+                  <a class="dropdown-item  mr-sm-2" href="{% url 'contacto-registros'%}" >Registros - Contacto</a>
+                  <a class="dropdown-item  mr-sm-2" href="{% url 'responsabilidad-usu' %}" >Responsabilidades - voluntarios</a>
                   </div>
               </li>
 
