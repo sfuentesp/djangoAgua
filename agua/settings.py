@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuario.apps.UsuarioConfig',
     'contacto.apps.ContactoConfig',
+    'boleta.apps.BoletaConfig',
     'crispy_forms',
 ]
 
@@ -113,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
@@ -136,3 +137,6 @@ AUTHENTICATION_BACKENDS = ('usuario.backend.MyBackend','django.contrib.auth.back
 'django.contrib.auth.backends.ModelBackend')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
+MEDIA_ROOT = 'boleta/static/uploads/'
+MEDIA_URL= 'boleta/static/uploads/'

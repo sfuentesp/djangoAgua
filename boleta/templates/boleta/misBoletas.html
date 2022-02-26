@@ -1,0 +1,40 @@
+
+
+{% extends 'usuario/main.html' %}
+{% block content %}
+
+{% load static %} 
+  
+      <h1>Mis Boletas</h1>
+        <hr>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha de emisión boleta</th>
+            <th>m3 facturados (consumo del mes)</th>
+            <th>¿Cuéntanos cómo lo estás haciendo?</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+      {% for b in boletas %}
+             
+          <tr>
+            <td>{{b.id}}</td>
+            <td>{{b.fecha_emision}}</td>
+            <td>{{b.mts3}}</td>
+            <td>{{b.comentario}}</td>
+            <td><a href="{% url 'boleta-descargar-usu' b.upload %}">{{b.upload}}</a></td>
+            
+         </tr>
+        
+       {% endfor %}
+       
+    </tbody>
+  </table>
+
+
+              
+  
+{% endblock %}

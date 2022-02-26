@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.shortcuts import redirect, render
 from .models import Usuario, Post, Voluntario, Responsabilidad
+from boleta.models import Boleta
 from .forms import PostForm, ResponsabilidadForm, UsuarioForm, LoginForm,UserForm, VoluntarioForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
@@ -85,7 +86,19 @@ def login(request):
 
 @login_required(login_url="/login")
 def bienvenido(request):
-    return render(request,'usuario/bienvenido.html')
+    labels = []
+    data = []
+
+    queryset = Boleta.objects.order_by('-fecha_emision')[:5]
+    for b in queryset:
+        labels.append(b.comentario)
+        data.append(b.mts3)
+
+    return render(request, 'usuario/bienvenido.html', {
+        'labels': labels,
+        'data': data,
+        })
+    #return render(request,'usuario/bienvenido.html')
 
 def salir(request):
     logout(request)
@@ -97,12 +110,16 @@ def nuevoPost(request):
     if request.method=="POST":
         form=PostForm(data= request.POST)
         if form.is_valid():
-            titulos=form.cleaned_data["titulo"]
-            des=form.cleaned_data["descripcion"]
+            form.instance.autor = request.user
+       
+            post=form.save(commit=False)
+            post.save() #se guarda en la db
+            # titulos=form.cleaned_data["titulo"]
+            # des=form.cleaned_data["descripcion"]
           
-            usu=request.user
+            # usu=request.user
 
-            post=Post.objects.create(titulo=titulos, descripcion=des, autor=usu)
+            # post=Post.objects.create(titulo=titulos, descripcion=des, autor=usu)
            
         return redirect(listarPost)
         

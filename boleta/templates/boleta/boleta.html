@@ -1,0 +1,55 @@
+
+
+{% extends 'usuario/main.html' %}
+{% block content %}
+
+
+  <div class="form-group">
+  
+      <h1>Ingreso Boleta</h1>
+      <hr>
+      <div class="card">
+        <h5 class="card-header">
+   
+   </h5>
+   <div class="card-body">
+     
+  
+<hr>
+ 
+      <form method="POST" action="" enctype="multipart/form-data" >
+        {%csrf_token%}
+        
+        {% load crispy_forms_tags%}
+        {{form|crispy}}
+        <br>
+        {% if mensaje %}
+        <div class="alert alert-warning">
+          <p>Fecha de boleta ya esta ingresado</p>
+      </div>
+      
+        {% endif %}
+        <div class="form-group">
+            <button class="btn btn-outline-info" formmethod="post" type="submit">
+                Guardar
+    
+            </button>
+        </div>
+    </form>
+   
+  
+ 
+
+   </div>
+
+ </div>
+
+
+  
+
+
+  </div>
+
+              
+  
+{% endblock %}

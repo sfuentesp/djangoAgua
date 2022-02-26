@@ -22,8 +22,8 @@
         <h5 class="card-title"><a class="article-title" href="#">{{ post.titulo|title }}</a></h5>
         <p class="card-text">{{ post.descripcion }}</p>
         <div class="text-right">
-          <a href="editar/{{post.id}}/" class="btn btn-outline-success btn-sm">
-           
+          <!-- <a href="editar/{{post.id}}/" class="btn btn-outline-success btn-sm"> -->
+          <a href="{% url 'post-editar-usu' post.id %}" class="btn btn-outline-success btn-sm">
             <i class="bi bi-file-post-fill"></i> Modificar</a>
           
           <a href="eliminar/{{post.id}}/" class="btn btn-outline-danger btn-sm">
