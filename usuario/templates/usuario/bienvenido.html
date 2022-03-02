@@ -1,36 +1,27 @@
 {% extends 'usuario/main.html' %}
 {% block content %}
 
-<h1>Home</h1>
-<div id="container" style="width: 75%;">
-    <canvas id="pie-chart"></canvas>
-  </div>
+<div class="row">
+  <div class="col-sm-12 col-lg-8 offset-lg-2 bg-light ">
+    <div class="page-header">
+        <h1>Resumen</h1>
+        <hr>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  <script>
+    <div class="card border-warning mb-3" >
+      <div class="card-header">Total mts3</div>
+      <div class="card-body text-info">
+        <h3 class="card-title text-center">{{ totalmts3 }}</h3>
+     </div>
+    </div>
 
-    var config = {
-      type: 'bar',
-      data: {
-        datasets: [{
-          data: {{ data|safe }},
-          backgroundColor: [
-            '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
-          ],
-          label: 'comentario'
-        }],
-        labels: {{ labels|safe }}
-      },
-      options: {
-        responsive: true
-      }
-    };
-
-    window.onload = function() {
-      var ctx = document.getElementById('pie-chart').getContext('2d');
-      window.myPie = new Chart(ctx, config);
-    };
-
-  </script>
+    <div class="card border-warning mb-3" >
+      <div class="card-header">Total monto</div>
+      <div class="card-body text-info">
+        <h5 class="card-title">Info card title</h5>
+     </div>
+    </div>
+</div>
+</div>
 
 {% endblock %}

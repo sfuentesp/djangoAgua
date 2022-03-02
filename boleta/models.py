@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class Boleta(models.Model):
     fecha_emision=models.DateField("Fecha de emisión boleta", null=False)
     mts3=models.DecimalField("m3 facturados (consumo del mes)",max_digits=5, decimal_places=2, null=False)
+    monto_facturado=models.IntegerField()
     fecha_ingreso=models.DateTimeField(auto_now_add=True)
     upload = models.FileField("Ingresar boleta (formato pdf, jpg o png)", null=True, blank=True)
     comentario=models.TextField("¿Cuéntanos cómo lo estás haciendo?", null=False)

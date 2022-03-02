@@ -3,25 +3,23 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-lg-2 ">
-
-    </div>
-    <div class="col-lg-8 ">
-        <h1>Nuevo comentario     <a href="{% url 'post-list-usu' %}" class="btn btn-info btn-circle btn-lg">
-            <i class="bi bi-arrow-counterclockwise"></i></a></h1>
-       <hr>
+    <div class="col-sm-12 col-lg-8 offset-lg-2 bg-light ">
+        <div class="page-header">
+            <h1>Nuevo comentario     <a href="{% url 'post-list-usu' %}" class="btn btn-info btn-circle btn-lg">
+                <i class="bi bi-arrow-counterclockwise"></i></a></h1>
+        </div>
+        
+  
         <form method="POST">
             {%csrf_token%}
             
             {% load crispy_forms_tags%}
             {{form|crispy}}
             
-            <button type="submit" class="btn btn-success" >Guardar</button>
+            <button type="submit" class="btn btn-outline-info" >Guardar</button>
         </form>
   </div>
-  <div class="col-lg-2">
-
-         </div>
+ 
 </div>
 
 {% endblock %}

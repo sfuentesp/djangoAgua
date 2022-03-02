@@ -1,8 +1,8 @@
 from datetime import datetime
 from django.shortcuts import redirect, render
-from .models import Usuario, Post, Voluntario, Responsabilidad
+from .models import Post, Voluntario, Responsabilidad
 from boleta.models import Boleta
-from .forms import PostForm, ResponsabilidadForm, UsuarioForm, LoginForm,UserForm, VoluntarioForm
+from .forms import PostForm, ResponsabilidadForm,  LoginForm,UserForm, UserForm2, VoluntarioForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
@@ -24,25 +24,12 @@ def galeria(request):
     return render(request,'usuario/galeria.html')
 
 
+
+@login_required(login_url="/login")
 def listarUser(request):
-    usu=Usuario.objects.all()
+   
     usu2=User.objects.all()
-    return render(request,'usuario/usuarios.html',{"usu":usu,"usu2":usu2})
-
-
-def nuevoUsuario(request):
-    if request.method=="POST":
-        form=UsuarioForm(data= request.POST)
-        if form.is_valid():
-            cliente=form.save(commit=False)
-            cliente.save() #se guarda en la db
-                  
-        return redirect('/usuarios')
-
-    else:
-        form=UsuarioForm()
-        return render(request,'usuario/nuevousuarioAppusuario.html',{"form":form})
-
+    return render(request,'usuario/usuarios.html',{"usu2":usu2})
 
 
 def crearusuario(request):
@@ -51,30 +38,46 @@ def crearusuario(request):
         form=UserForm(data= request.POST)
         if form.is_valid():
             nombre=form.cleaned_data["nombre"]
+            apellido=form.cleaned_data["apellido"]
+            nombre_de_usuario=form.cleaned_data["nombre_de_usuario"]
             email=form.cleaned_data["email"]
             clave=form.cleaned_data["password"]
             
-            user=User.objects.create_user(nombre,email,clave)
+            user=User.objects.create_user(first_name=nombre,last_name=apellido,username=nombre_de_usuario,email=email,password=clave)
            
             user.save()
         return redirect('/login')
     else:
         form=UserForm()
         return render(request,'usuario/nuevousuario.html',{"form":form})
+
+def editarUsuario(request,id):
+    usu=User.objects.get(pk=id)
+    form=UserForm2(instance=usu)
+
+    if request.method=="POST":
+        form=UserForm2(request.POST)
+        if form.is_valid():
+            form.save()
+     
+        return redirect(listarUser)
+    else:
         
+        return render(request,'usuario/editarUsuario.html',{"form":form})
+
 
 def login(request):
     if request.method=="POST":
         form = LoginForm(data=request.POST)
         if form.is_valid():
             
-            usu=form.cleaned_data["nombre"]
+            nombre_de_usuario=form.cleaned_data["nombre_de_usuario"]
             clave=form.cleaned_data["password"]
-            user=authenticate(request,username=usu,password=clave)
+            user=authenticate(request,username=nombre_de_usuario,password=clave)
            
             if user is not None:
                 auth_login(request,user)
-                #return render(request,'usuario/bienvenida.html',{"user":user})
+                
                 return redirect("/bienvenido")
             else:
                 return redirect("/login")
@@ -86,19 +89,14 @@ def login(request):
 
 @login_required(login_url="/login")
 def bienvenido(request):
-    labels = []
-    data = []
-
-    queryset = Boleta.objects.order_by('-fecha_emision')[:5]
-    for b in queryset:
-        labels.append(b.comentario)
-        data.append(b.mts3)
+    totalmts3=0
+    boletas=Boleta.objects.filter(usu=request.user)
+    for b in boletas:
+        totalmts3+=b.mts3
 
     return render(request, 'usuario/bienvenido.html', {
-        'labels': labels,
-        'data': data,
-        })
-    #return render(request,'usuario/bienvenido.html')
+        'totalmts3':totalmts3})
+   
 
 def salir(request):
     logout(request)
@@ -114,13 +112,7 @@ def nuevoPost(request):
        
             post=form.save(commit=False)
             post.save() #se guarda en la db
-            # titulos=form.cleaned_data["titulo"]
-            # des=form.cleaned_data["descripcion"]
-          
-            # usu=request.user
-
-            # post=Post.objects.create(titulo=titulos, descripcion=des, autor=usu)
-           
+         
         return redirect(listarPost)
         
     else:
@@ -181,6 +173,9 @@ def nuevaResponsabilidad(request):
     else:
         form=ResponsabilidadForm()
         return render(request,'usuario/nuevaResponsabilidad.html',{"form":form,"res":r})
+
+
+
 
 
 

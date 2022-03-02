@@ -1,36 +1,46 @@
 
 
-{% extends 'usuario/layout.html' %}
+{% extends 'usuario/main.html' %}
 {% block content %}
 
-  <div class="form-gropu">
-  
-      <h4>Usuario de app usuario</h4><a href="{% url 'nuevo-usu-app'%}"class="btn btn-primary">Agregar</a>
-      {% for u in usu %}
-          
-        <ul class="list-group">
-      
-        <li class="list-group-item">{{u.nombre}} {{u.apellido}} </li>
-      
-      </ul>
-    
-
-      {% endfor %}
-    
-  </div>
-  <hr>
-  <div class="form-group">
-      <h4>Usuarios de django users</h4><a href="{% url 'nuevo-usu-django'%}"class="btn btn-primary">Agregar</a>
-      {% for u in usu2 %}
-      <ul class="list-group">
-      
-        <li class="list-group-item">{{u.username}} </li>
-      
-      </ul>
-      {% endfor %}
-    
+<div class="row">
+  <div class="col-sm-12 col-lg-8 offset-lg-2 bg-light ">
+    <div class="page-header">
+        <h1>Usuarios registrados</h1>
+        <hr>
     </div>
    
-              
+ 
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Fecha Registro</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nombre de usuario</th>
+            <th>Email</th>
+            <!-- <th>Opciones</th> -->
+          </tr>
+        </thead>
+        <tbody>
+      {% for c in usu2 %}
+             
+          <tr>
+            
+            <td>{{c.date_joined}}</td>
+            <td>{{c.first_name}}</td>
+            <td>{{c.last_name}}</td>
+            <td>{{c.username}}</td>
+            <td>{{c.email}}</td>
+         
+            <!-- <td><a href="{% url 'editar-usu' c.id %}" class="btn btn-warning btn-sm">Editar</a> -->
+          </tr>
+        
+       {% endfor %}
+       
+    </tbody>
+  </table>
+
+  </div>
   
 {% endblock %}

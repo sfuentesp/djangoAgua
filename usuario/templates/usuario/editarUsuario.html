@@ -1,13 +1,10 @@
 
-{% extends 'usuario/layout.html' %}
+{% extends 'usuario/main.html' %}
 {% block content %}
 
 
     <div class="row">
-        <div class="col-lg-2 ">
-
-        </div>
-        <div class="col-lg-8 ">
+        <div class="col-sm-12 col-lg-8 offset-lg-2 bg-light ">
             <form method="POST">
                         {%csrf_token%}
                         
@@ -22,9 +19,7 @@
                         </div>
                     </form>
         </div>
-        <div class="col-lg-2 ">
 
-        </div>
         
 
   </div>

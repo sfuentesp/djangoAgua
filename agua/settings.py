@@ -140,3 +140,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = 'boleta/static/uploads/'
 MEDIA_URL= 'boleta/static/uploads/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

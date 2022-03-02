@@ -12,7 +12,8 @@ urlpatterns=[
     path('galeria/', views.galeria, name="galeria"),
 
     path('nuevousuarioDjangousu/', views.crearusuario,name="nuevo-usu-django"),
-    path('nuevousuarioAppusu/', views.nuevoUsuario,name="nuevo-usu-app"),
+    path('usuario/editar/<int:id>/', views.editarUsuario, name='editar-usu'),
+    # path('nuevousuarioAppusu/', views.nuevoUsuario,name="nuevo-usu-app"),
 
     path('usuarios/', views.listarUser,name="listado-usu"),
     path('bienvenido/', views.bienvenido, name="home-bienvenido"),
