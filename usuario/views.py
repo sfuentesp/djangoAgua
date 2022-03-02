@@ -90,12 +90,14 @@ def login(request):
 @login_required(login_url="/login")
 def bienvenido(request):
     totalmts3=0
+    totalmonto=0
     boletas=Boleta.objects.filter(usu=request.user)
     for b in boletas:
         totalmts3+=b.mts3
+        totalmonto+=b.monto_facturado
 
     return render(request, 'usuario/bienvenido.html', {
-        'totalmts3':totalmts3})
+        'totalmts3':totalmts3,"totalmonto":totalmonto})
    
 
 def salir(request):
