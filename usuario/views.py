@@ -89,15 +89,23 @@ def login(request):
 
 @login_required(login_url="/login")
 def bienvenido(request):
-    totalmts3=0
+    mts=[]
+    montoFact=[]
+    nmes=[]
     totalmonto=0
-    boletas=Boleta.objects.filter(usu=request.user)
+    totalmts3=0
+    boletas=Boleta.objects.filter(usu=request.user).order_by("fecha_emision")
+
     for b in boletas:
         totalmts3+=b.mts3
         totalmonto+=b.monto_facturado
 
+        mts.append(int(b.mts3))
+        montoFact.append(b.monto_facturado)
+        nmes.append(int(b.fecha_emision.month))
+        
     return render(request, 'usuario/bienvenido.html', {
-        'totalmts3':totalmts3,"totalmonto":totalmonto})
+        'totalmts3':totalmts3,"totalmonto":totalmonto,"mts":mts,"monto":montoFact,"mes":nmes})
    
 
 def salir(request):

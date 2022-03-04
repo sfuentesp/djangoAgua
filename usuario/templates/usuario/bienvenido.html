@@ -1,6 +1,8 @@
 {% extends 'usuario/main.html' %}
 {% block content %}
 
+
+
 <div class="row">
   <div class="col-sm-12 col-lg-8 offset-lg-2 bg-light ">
     <div class="page-header">
@@ -12,6 +14,7 @@
       <div class="card-header">Total mts3</div>
       <div class="card-body text-info">
         <h3 class="card-title text-center">{{ totalmts3 }}</h3>
+        <div id="container2"></div>
      </div>
     </div>
 
@@ -19,9 +22,113 @@
       <div class="card-header">Total monto</div>
       <div class="card-body text-info">
         <h3 class="card-title text-center">{{ totalmonto }}</h3>
+        <div id="container"></div>
      </div>
     </div>
+
+
+    
+    <figure class="highcharts-figure">
+    
+  
+    </figure>
+
 </div>
 </div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script type="application/javascript">
+  Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Consumos por Mes'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+      categories: {{mes|safe}},
+      crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rainfall (mm)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Monto Facturado',
+        data: {{ monto|safe }}
+
+    
+
+    }]
+});
+</script>
+
+<script type="application/javascript">
+  Highcharts.chart('container2', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Consumos por Mes'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: {{mes|safe}},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rainfall (mm)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Consumo mts3',
+        data: {{ mts|safe }}
+
+    
+
+    }]
+});
+</script>
+
 
 {% endblock %}
